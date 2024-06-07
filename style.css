@@ -1,0 +1,83 @@
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  font-family: "Baumans", cursive;
+  color: #F3F0F0;
+}
+body:before {
+  content: "Bonjour";
+}
+
+li {
+  list-style: none;
+}
+
+.title {
+  padding: 5px 0 0 10px;
+  text-transform: uppercase;
+  color: #fa9e1e;
+  text-shadow: 2px 2px 0 #84c1ff, 4px 4px 0 #ff1808, 4px 4px 6px #fa9e1e;
+}
+
+li {
+  display: inline;
+  padding: 0 15px;
+  border-left: 3px solid #F3F0F0;
+}
+li:active {
+  border: 5px solid #F3F0F0;
+}
+@media (max-width: 799px) {
+  li {
+    display: none;
+  }
+}
+
+.tst1, .tst3, .tst2 {
+  width: 100px;
+  height: 80px;
+  background: #fa9e1e;
+}
+
+.tst2 {
+  background: #84c1ff;
+}
+
+.tst3 {
+  background: #ff1808;
+}
+
+.navbar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fa1eef;
+  height: 100px;
+}
+.navbar .navbar__logo {
+  background-color: #84c1ff;
+  height: 25px;
+  width: 45px;
+}
+.navbar .navbar__link {
+  color: #242424;
+  text-decoration: none;
+}
+.navbar .navbar__link--red {
+  color: #ff1808;
+}
+
+.navbar__logo + div {
+  background-color: black;
+}
+
+h1 {
+  text-shadow: 0.5rem 0.5rem black;
+  margin: 200px;
+}
+
+/*# sourceMappingURL=style.css.map */

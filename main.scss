@@ -1,0 +1,184 @@
+//!Mes essais en SASS§§§§§§§§§§
+
+
+//mes variables de couleurs
+$white: #F3F0F0;
+$blue: #84c1ff;
+$red: #ff1808;
+$orange:#fa9e1e;
+$marron-fonce:#242424;
+$violet:#fa1eef;
+body {
+
+margin: 0;
+padding: 0;
+height: 100vh;
+overflow: hidden; //j 'enléve tout ce qui dépasse
+position: relative;
+font-family: 'Baumans', cursive;
+color: $white;
+&:before {
+content:'Bonjour';//on peut mettre du contenu en html dans le CSS,avec before ou after avec ces 2 pseudos class 
+
+}
+
+
+}
+
+
+li {
+
+list-style: none; //j 'enléve tout les points de mes listes
+
+}
+
+//a {
+    //text-decoration: none; // j'enléve tout les traits soulignés de mes link
+  //  &:visited{
+      //  color:$white; //pour éviter que mon lien devienne violet une fois cliqué.
+    //}
+//}
+
+
+//TODO  *****************HEADER******************************//
+
+
+.title {
+ padding: 5px 0 0 10px;
+ text-transform: uppercase;//sa sera toujours en majuscule
+ color: $orange;
+ text-shadow: 2px 2px 0 $blue, 4px 4px 0 $red,4px 4px 6px $orange;
+}
+
+
+li {
+    display: inline;
+    padding: 0 15px;
+    border-left:3px solid $white;
+   
+   
+   // &:hover{
+   // border: 2px solid $white; //en survole on à une bordure qui se forme
+   // transition: O.5s ease-in-out;
+   &:active {
+       border: 5px solid $white;
+   }
+   @media (max-width: 799px){
+   display:none;
+   }
+    
+}
+
+//le @extend ////////////////////////////////////////////////////////////
+//?La méthode @extend permet de récupérer et de réutiliser les valeurs de ma 1er classe!!!!!!!
+.tst1{
+    width: 100px;
+    height: 80px;
+    background:$orange;
+}
+                          
+.tst2{
+    @extend .tst1;
+    background:$blue;
+}
+
+.tst3{
+    @extend .tst1;
+    background:$red;
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//*ceci est mon bloc BEM
+.navbar{
+display: flex;
+flex-direction: row;
+align-items: center;
+justify-content: space-between;
+background-color:$violet;
+height: 100px;
+
+//*ceci est un élément BEM
+
+.navbar__logo{
+background-color: $blue;
+height: 25px;
+width: 45px;
+
+}
+
+.navbar__link{
+
+    color: $marron-fonce;
+    text-decoration: none;
+   
+    //!ceci est mon modificateur et mon 1er lien est rouge!!!! BEM
+//!j'ai diminué mes sélecteurs avec l'esperluette
+//!pour éviter les conflits entre mes sélecteurs grace à & cela m'évite de créer
+//!des nouveaux sélecteurs plus compliqués cela facilite la visibilité je l'ai nesté
+&--red{
+
+    color: $red;
+    
+}
+}
+}
+
+
+.navbar a {
+
+//? ceci est un combinateur descendant parce que l'on 
+//?selectionne tout les liens de la class navbar.
+//?il est descendant parce qu'il a 2 sélecteurs est un espace
+}
+ 
+.navbar {
+
+//? ceci est un combinateur parent parce que ma class
+//?est déclaré comme ceci
+
+
+}
+
+div > a{
+
+//? ceci est un combinateur parent enfant et qui applique
+//? à tout ces enfants,tout les liens du parent de div appliqueront
+//?une propriété si elle leur est demandés
+
+}
+
+
+//?  navbar = grand-parent, div est l'enfant 
+//?et a sont les petits enfants.
+
+
+ .navbar__logo + div {
+//?ceci est un combinateur adjacent parce que ma div est
+//? directement précédé de .navbar__logo dans ce cas la 
+//?propriété CSS est appliqué
+   background-color: black; 
+}
+
+
+//? MIXIN
+//? permet de stocker plusieurs valeur pour 1
+//? ou des éléments contrairement à une variable.
+//?je créer une mixin avec un nom.
+//?J'appelle ma mixin avec @include les le nom que j'ai donné à la mixin
+
+@mixin title-shadow {
+
+text-shadow: 0.5rem 0.5rem darken($color: #000000, $amount: 0.1%);
+margin: 200px;
+}
+
+h1{
+
+    @include title-shadow;
+
+}
+
+//* les fonxtions dans SASS ""darken($color: #000000, $amount: 0.1%);""
+//* je suis allé dans la blbliothéque de sass pour prendre une fonction correspondante.
+//*je vais dans @mixin pour enlever mon ancienne couleur qui été black 
+//*Et je lui introduit à la place ma fonction darken.
+//*cette fonction comprend une couleur au choix et un taux de assombrissement.
